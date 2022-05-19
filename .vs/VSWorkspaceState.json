@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\cypress",
+    "\\cypress\\files",
+    "\\cypress\\fixtures",
+    "\\cypress\\integration",
+    "\\cypress\\integration\\demo-qa",
+    "\\cypress\\pageObjects"
+  ],
+  "SelectedNode": "\\cypress\\pageObjects\\selectablesPage.js",
+  "PreviewInSolutionExplorer": false
+}

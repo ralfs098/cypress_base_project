@@ -4,6 +4,7 @@ import RadioButtonsPage from "../../pageObjects/radioButtonsPage";
 import WebTablesPage from "../../pageObjects/webTablesPage";
 import ButtonsPage from "../../pageObjects/buttonsPage";
 import LinksPage from "../../pageObjects/linksPage";
+import SelectablesPage from "../../pageObjects/selectablesPage";
 
 context("Elements Page", () => {
   context("Text box scenarios", () => {
@@ -184,4 +185,49 @@ context("Elements Page", () => {
       });
     });
   });
+
+    context("Selectables scenarios", () => {
+        beforeEach(() => {
+            // Preconditions
+            SelectablesPage.visit();
+        });
+        it("First Scenario in Selectables", () => {
+
+            //click in needed list items
+            SelectablesPage.listItems.contains("Cras justo odio").click();
+            SelectablesPage.listItems.contains("Morbi leo risus").click();
+
+            //verify that the right ones have been clicked
+            SelectablesPage.allListItems.contains("Cras justo odio").should('have.class', 'active');
+            SelectablesPage.allListItems.contains("Morbi leo risus").should('have.class', 'active');
+
+            //verify that the wrong ones have not been clicked
+            SelectablesPage.allListItems.contains("Dapibus ac facilisis in").should('not.have.class', 'active');
+            SelectablesPage.allListItems.contains("Porta ac consectetur ac").should('not.have.class', 'active');
+        });
+
+        it.only("Second Scenario in Selectables", () => {
+            SelectablesPage.gridNavButton.click();
+
+            //click in needed grid items
+            SelectablesPage.allGridItems.contains("Two").click();
+            SelectablesPage.allGridItems.contains("Four").click();
+            SelectablesPage.allGridItems.contains("Six").click();
+            SelectablesPage.allGridItems.contains("Eight").click();
+
+            //verify that the right ones have been clicked
+            SelectablesPage.allGridItems.contains("Two").should('have.class', 'active');
+            SelectablesPage.allGridItems.contains("Four").should('have.class', 'active');
+            SelectablesPage.allGridItems.contains("Six").should('have.class', 'active');
+            SelectablesPage.allGridItems.contains("Eight").should('have.class', 'active');
+
+            //verify that the wrong ones have not been clicked
+            SelectablesPage.allGridItems.contains("One").should('not.have.class', 'active');
+            SelectablesPage.allGridItems.contains("Three").should('not.have.class', 'active');
+            SelectablesPage.allGridItems.contains("Five").should('not.have.class', 'active');
+            SelectablesPage.allGridItems.contains("Seven").should('not.have.class', 'active');
+            SelectablesPage.allGridItems.contains("Nine").should('not.have.class', 'active');
+        });
+
+    });
 });
